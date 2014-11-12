@@ -1,5 +1,5 @@
-require "active_support/core_ext/object/try"
-require "active_support/core_ext/hash/slice"
+require 'active_support/core_ext/object/try'
+require 'active_support/core_ext/hash/slice'
 
 module ActionDispatch::Routing
   class Mapper
