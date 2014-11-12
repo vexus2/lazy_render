@@ -14,7 +14,7 @@ module LazyRender
             name:   v['name'],
             locals: v['locals'] || {}
         }
-        send(data[:name], data[:locals])
+        data[:locals].empty? ? send(data[:name]) : send(data[:name], data[:locals])
         # TODO: Add Benchmark time
         html = render_to_string 'lazy_render/' + data[:name].gsub('__', '/'), layout: false, locals: { data: @data || {} }
         result << html

@@ -1,5 +1,5 @@
 class LazyRenderController < LazyRender::LazyloadController
-  def lazy_render_message(locals)
+  def lazy_render_message
   end
 
   def pass_variables(locals)
@@ -8,10 +8,10 @@ class LazyRenderController < LazyRender::LazyloadController
     @data[:value3] = locals[:v]
   end
 
-  def directory__separator(locals)
+  def directory__separator
   end
 
-  def with_cache(locals)
+  def with_cache
   end
 
   def load
