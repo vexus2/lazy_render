@@ -1,8 +1,10 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
+ENV["RAILS_ROOT"] ||= File.dirname(__FILE__) + "../../../spec/test_app"
 require 'spec_helper'
 require File.expand_path("../test_app/config/environment", __FILE__)
 require 'rspec/rails'
+require 'capybara-webkit'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -28,10 +30,13 @@ ENGINE_RAILS_ROOT=File.join(File.dirname(__FILE__), '../')
 Dir[File.join(ENGINE_RAILS_ROOT, "spec/support/**/*.rb")].each {|f| require f }
 
 RSpec.configure do |config|
+  config.include Rails.application.routes.url_helpers
   config.mock_with :rspec
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
+  config.include Capybara::DSL
+  Capybara.javascript_driver = :webkit
 end
 
 RSpec.configure do |config|

@@ -1,4 +1,10 @@
 <h1>Top#index</h1>
 <p>Find me in app/views/top/index.html.erb</p>
 
-<%= lazy_render :pc__pickup_ads %>
+<%= lazy_render :lazy_render_message %>
+
+<%= lazy_render :pass_variables, locals: { v: 'sample text' } %>
+
+<%= lazy_render :directory__separator %>
+
+<%= lazy_render :with_cache, cache: 300 %>
