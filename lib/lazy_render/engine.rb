@@ -1,3 +1,4 @@
+require 'lazy_render/rails/routes'
 module LazyRender
   class Engine < ::Rails::Engine
     isolate_namespace LazyRender

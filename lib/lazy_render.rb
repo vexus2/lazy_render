@@ -1,4 +1,4 @@
-require "lazy_render/engine"
+require 'lazy_render/engine'
 
 module LazyRender
 end

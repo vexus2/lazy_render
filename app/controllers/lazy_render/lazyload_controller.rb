@@ -1,4 +1,4 @@
-require_dependency "lazy_render/application_controller"
+require_dependency 'lazy_render/application_controller'
 
 module LazyRender
   class LazyloadController < ApplicationController
@@ -7,7 +7,7 @@ module LazyRender
     def load
       return unless params['lazy_renders']
       result = []
-      @data = {}
+      @data  = {}
       params['lazy_renders'].values.each do |v|
         next unless v['name']
         data = {
@@ -23,8 +23,5 @@ module LazyRender
       render json: result
     end
 
-    def pc__pickup_ads(locals)
-      @data[:pickup_ads] = 1
-    end
   end
 end
