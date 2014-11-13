@@ -32,6 +32,14 @@ add to `application.js`
 
 ### 3. Configuring Rontroller
 
+add to include helper into application_controller
+
+```
+class ApplicationController < ActionController::Base
+  helper LazyRender::LazyloadHelper
+end
+```
+
 create a controller to run lazy render
 
 controllers/lazy_render_controller.rb
