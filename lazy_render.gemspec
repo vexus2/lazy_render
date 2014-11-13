@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
   s.name        = "lazy_render"
   s.version     = LazyRender::VERSION
   s.authors     = ["vexus2"]
-  s.email       = ["rinrin900@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of LazyRender."
-  s.description = "TODO: Description of LazyRender."
+  s.email       = ["hikaru.tooyama@gmail.com"]
+  s.homepage    = "http://github.com/vexus2"
+  s.summary     = "Delay load your actions"
+  s.description = "It delays loading of partial or actions in views."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
