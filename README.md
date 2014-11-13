@@ -106,4 +106,4 @@ Call lazy_render from your any views
 
 
 ## Thanks to
-idea by [akiyan](https://github.com/akiyan)
+be inspired by [akiyan](https://github.com/akiyan)
