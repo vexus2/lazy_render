@@ -21,8 +21,16 @@ add to `routes.rb`
   lazy_render_for 'lazy_render/load', to: 'lazy_render'
 ```
 
+### 2. Configuring Javascript
 
-### 2. Configuring Rontroller
+add to `application.js`
+
+```
+//= require jquery
+//= require lazy_render
+```
+
+### 3. Configuring Rontroller
 
 create a controller to run lazy render
 
@@ -45,7 +53,7 @@ end
 ```
 
 
-### 3. Configuring View
+### 4. Configuring View
 
 create view file under `views/lazy_render/`
 
@@ -57,12 +65,18 @@ views/lazy_render/sample_action.html.erb
 ```
 
 
-### 4. Call lazy_render from View
+### 5. Call lazy_render from View
 
 Call lazy_render from your any views
 
 ```
 <%= lazy_render :sample_text, locals: { value: 'Sample Text' } %>
+```
+
+```
+<h2>This is sample view.</h2>
+<p>Hello LazyRender!</p>
+<h3>Sample Text</3>
 ```
 
 ### lazy_render options
