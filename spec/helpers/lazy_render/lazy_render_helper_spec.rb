@@ -24,13 +24,13 @@ module LazyRender
       end
 
       it 'return span tag with class and name and cache params' do
-        expect(helper.lazy_render('sample_class', cache: 200)).to eq "<span class=\"js-lazy-render-sample_class\" data-lazy-render-name=\"sample_class\" data-lazy-render-cache=\"200\"></span>"
-        expect(helper.lazy_render('sample_class', cache: '300')).to eq "<span class=\"js-lazy-render-sample_class\" data-lazy-render-name=\"sample_class\" data-lazy-render-cache=\"300\"></span>"
-        expect(helper.lazy_render('sample_class', cache: 'abc')).to eq "<span class=\"js-lazy-render-sample_class\" data-lazy-render-name=\"sample_class\" data-lazy-render-cache=\"0\"></span>"
+        expect(helper.lazy_render('sample_class', cache: 200)).to eq "<span class=\"js-lazy-render-sample_class\" data-lazy-render-cache=\"200\" data-lazy-render-name=\"sample_class\"></span>"
+        expect(helper.lazy_render('sample_class', cache: '300')).to eq "<span class=\"js-lazy-render-sample_class\" data-lazy-render-cache=\"300\" data-lazy-render-name=\"sample_class\"></span>"
+        expect(helper.lazy_render('sample_class', cache: 'abc')).to eq "<span class=\"js-lazy-render-sample_class\" data-lazy-render-cache=\"0\" data-lazy-render-name=\"sample_class\"></span>"
       end
 
       it 'return span tag with class and name and callback method' do
-        expect(helper.lazy_render('sample_class', callback: 'Activity.start')).to eq "<span class=\"js-lazy-render-sample_class\" data-lazy-render-name=\"sample_class\" data-lazy-render-callback=\"Activity.start\"></span>"
+        expect(helper.lazy_render('sample_class', callback: 'Activity.start')).to eq "<span class=\"js-lazy-render-sample_class\" data-lazy-render-callback=\"Activity.start\" data-lazy-render-name=\"sample_class\"></span>"
       end
     end
   end

@@ -5,7 +5,7 @@ It delays loading of partial or actions in views.
 
 ## Installation
 
-LazyRender works with Rails 3.2 onwards. You can add it to your Gemfile with:
+LazyRender works with Rails 4.0 onwards. You can add it to your Gemfile with:
 
 ```
 gem 'lazy_render'
