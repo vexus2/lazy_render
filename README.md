@@ -1,5 +1,7 @@
 # LazyRender
 
+![lazy_render](https://raw.githubusercontent.com/vexus2/lazy_render/master/spec/assets/images/lazy-render.png)
+
 ## What is this?
 It delays loading of partial or actions in views.
 
