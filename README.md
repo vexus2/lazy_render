@@ -32,7 +32,7 @@ add to `application.js`
 //= require lazy_render
 ```
 
-### 3. Configuring Rontroller
+### 3. Configuring Controller
 
 add to include helper into application_controller
 
