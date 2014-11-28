@@ -29,6 +29,9 @@ var LazyRender = {
         lazy_renders : lazy_renders,
         referrer     : document.referrer ? document.referrer : ''
       },
+      beforeSend : function (jqXHR, settings) {
+        jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
+      },
       cache    : false,
       dataType : 'json',
       success  : function (result) {
