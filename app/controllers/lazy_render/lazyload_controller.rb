@@ -8,8 +8,7 @@ module LazyRender
       return unless params['lazy_renders']
       result = []
       @data  = {}
-      params['lazy_renders'].values.each do |v|
-        next unless v['name']
+      params['lazy_renders'].values.select { |v| v['name'] && respond_to?(v['name']) }.each do |v|
         data = {
             name:   v['name'],
             locals: v['locals'] || {}
@@ -22,6 +21,5 @@ module LazyRender
 
       render json: result
     end
-
   end
 end
