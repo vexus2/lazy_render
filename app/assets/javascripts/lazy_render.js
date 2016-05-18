@@ -10,7 +10,8 @@ var LazyRender = {
         locals   : $(this).data('lazy-render-params'),
         cache    : $(this).data('lazy-render-cache'),
         version  : $(this).data('lazy-render-version'),
-        callback : $(this).data('lazy-render-callback')
+        callback : $(this).data('lazy-render-callback'),
+        parallel : $(this).data('lazy-render-parallel')
       };
       if (param['cache']) {
         var cache = LazyRender.cache_read(param['name'] + $(this).attr('data-lazy-render-lazy_renders'), param['version']);
@@ -19,26 +20,33 @@ var LazyRender = {
           return;
         }
       }
-      lazy_render_elms[lazy_render_elms.length] = this;
-      lazy_renders.push(param);
+      if (param['parallel']) {
+        LazyRender.request([param], [this]);
+      } else {
+        lazy_render_elms[lazy_render_elms.length] = this;
+        lazy_renders.push(param);
+      }
     });
+    if (lazy_renders.length > 0) LazyRender.request(lazy_renders, lazy_render_elms);
+  },
+  request: function(params, positions) {
     $.ajax({
-      type     : 'post',
-      url      : '/lazy_render/load',
-      data     : {
-        lazy_renders : lazy_renders,
+      type       : 'post',
+      url        : '/lazy_render/load',
+      data       : {
+        lazy_renders : params,
         referrer     : document.referrer ? document.referrer : ''
       },
       beforeSend : function (jqXHR, settings) {
         jqXHR.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
       },
-      cache    : false,
-      dataType : 'json',
-      success  : function (result) {
-        $(lazy_renders).each(function (i, lazy_render) {
-          LazyRender.apply(lazy_render_elms[i], lazy_render, result[i]);
+      cache      : false,
+      dataType   : 'json',
+      success    : function (result) {
+        $(params).each(function (i, lazy_render) {
+          LazyRender.apply(positions[i], lazy_render, result[i]);
           if (lazy_render['cache']) {
-            LazyRender.cache_write(result[i], lazy_render['name'] + $(lazy_render_elms[i]).attr('data-lazy-render-lazy_renders'), lazy_render['version'], lazy_render['cache']);
+            LazyRender.cache_write(result[i], lazy_render['name'] + $(positions[i]).attr('data-lazy-render-lazy_renders'), lazy_render['version'], lazy_render['cache']);
           }
         });
       }
