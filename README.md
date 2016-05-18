@@ -93,6 +93,7 @@ Call lazy_render from your any views
 - *locals* : The parameters to passed to action
 - *cache* : Time to hold a View to the local storage. Default: 0
 - *callback* : To specify the Javascript method that you want to execute after displaying partial.
+- *parallel* : I carry it out in parallel without compiling a request in lazy_render. Default: false
 
 ## Contributing
 
